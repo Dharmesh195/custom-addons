@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="arc_res_company_website_config_view_form" model="ir.ui.view">
+            <field name="name">arc.res.company.website.config.view.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Website Configurations">
+                        <notebook>
+                            <page string="Home Page">
+                                <notebook>
+                                    <page string="Section : Home">
+                                        <group>
+                                            <group string="Home Page Heading">
+                                                <field name="is_font_match_logo"/>
+                                                <field name="main_title"/>
+                                                <field name="main_sub_title"/>
+                                                <field name="is_add_img_to_header"/>
+                                            </group>
+                                            <group>
+                                                <field name="main_cover_image" widget="image"/>
+                                            </group>
+                                        </group>
+                                        <group>
+                                            <group string="Point 1">
+                                                <field name="point_1_icon"/>
+                                                <field name="point_1_title"/>
+                                                <field name="point_1_desc"/>
+                                            </group>
+                                            <group string="Point 2">
+                                                <field name="point_2_icon"/>
+                                                <field name="point_2_title"/>
+                                                <field name="point_2_desc"/>
+                                            </group>
+                                            <group string="Point 3">
+                                                <field name="point_3_icon"/>
+                                                <field name="point_3_title"/>
+                                                <field name="point_3_desc"/>
+                                            </group>
+                                            <group string="Point 4">
+                                                <field name="point_4_icon"/>
+                                                <field name="point_4_title"/>
+                                                <field name="point_4_desc"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Section : Technologies">
+                                        <group>
+                                            <group>
+                                                <field name="technologies_title"/>
+                                            </group>
+                                        </group>
+                                        <field name="technologies_ids">
+                                            <form>
+                                                <group>
+                                                    <group>
+                                                        <field name="name" required="1"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="image" required="1" widget="image"
+                                                               options='{"size": [65, 65]}' class="bg-view"/>
+                                                    </group>
+                                                </group>
+                                            </form>
+                                            <list>
+                                                <field name="name"/>
+                                            </list>
+                                        </field>
+                                    </page>
+                                    <page string="Section : Fact Section">
+                                        <group>
+                                            <group>
+                                                <field name="fact_title"/>
+                                                <field name="fact_desc"/>
+                                                <field name="fact_point_1" placeholder="2 word title"/>
+                                                <field name="fact_point_1_desc" placeholder="in 14-15 word"/>
+                                                <field name="fact_point_2" placeholder="2 word title"/>
+                                                <field name="fact_point_2_desc" placeholder="in 14-15 word"/>
+                                                <field name="fact_point_3" placeholder="2 word title"/>
+                                                <field name="fact_point_3_desc" placeholder="in 14-15 word"/>
+                                                <field name="fact_point_4" placeholder="2 word title"/>
+                                                <field name="fact_point_4_desc" placeholder="in 14-15 word"/>
+                                            </group>
+                                            <group>
+                                                <field name="fact_bg_image" string="Fact Background Image"
+                                                       widget="image"
+                                                       class="bg-view"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Section : Industry We Serve">
+                                        <group>
+                                            <group>
+                                                <field name="arc_industries_title"/>
+                                            </group>
+                                        </group>
+                                        <field name="arc_industries_ids">
+                                            <list>
+                                                <field name="name"/>
+                                            </list>
+                                            <form>
+                                                <group>
+                                                    <group>
+                                                        <field name="name" required="1"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="image" required="1" widget="image"
+                                                               options='{"size": [65, 65]}' class="bg-view"/>
+                                                    </group>
+                                                </group>
+                                            </form>
+                                        </field>
+                                    </page>
+                                    <page string="Section : Development Process">
+                                        <group>
+                                            <field name="development_process_sec_title"/>
+                                            <field name="development_process_img" widget="image"/>
+                                        </group>
+                                    </page>
+                                    <page string="Section : Our Services">
+                                        <group>
+                                            <group>
+                                                <field name="service_title"/>
+                                            </group>
+                                            <group invisible="1">
+                                                <field name="is_icon_bg"/>
+                                                <field name="icon_bg" widget="color" invisible="not is_icon_bg"/>
+                                            </group>
+                                        </group>
+                                        <separator string="Services Details"/>
+                                        <field name="arc_service_ids">
+                                            <list>
+                                                <field name="name"/>
+                                                <field name="subtitle"/>
+                                            </list>
+                                            <form>
+                                                <group>
+                                                    <group>
+                                                        <field name="name" required="1"/>
+                                                        <field name="subtitle" required="1"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="image" options='{"size": [65, 65]}' class="bg-view"
+                                                               widget="image" required="1"/>
+                                                    </group>
+                                                </group>
+                                                <notebook>
+                                                    <page string="Read More">
+                                                        <field name="extra_desc"/>
+                                                    </page>
+                                                </notebook>
+                                            </form>
+                                        </field>
+
+                                    </page>
+                                    <page string="Section : Testimonials">
+                                        <group>
+                                            <group>
+                                                <field name="testimonial_title"/>
+                                            </group>
+                                        </group>
+                                        <field name="testimonials_ids">
+                                            <form>
+                                                <group>
+                                                    <group>
+                                                        <field name="title" required="1"/>
+                                                        <field name="desc" required="1"/>
+                                                        <field name="testimonial_from" required="1"/>
+                                                        <field name="testimonial_role"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="image" widget="image" options='{"size": [65, 65]}'
+                                                               class="bg-view"/>
+                                                    </group>
+                                                </group>
+                                            </form>
+                                            <list>
+                                                <field name="title"/>
+                                                <field name="testimonial_from"/>
+                                                <field name="testimonial_role"/>
+                                            </list>
+                                        </field>
+                                    </page>
+                                    <page string="Section : Questions &amp; Answers">
+                                        <group>
+                                            <field name="q_and_a_section_title"
+                                                   placeholder="Frequently Asked Quetions"/>
+                                        </group>
+                                        <field name="question_ids">
+                                            <list>
+                                                <field name="question" required="1"/>
+                                                <field name="answer" required="1"/>
+                                            </list>
+                                            <form>
+                                                <group>
+                                                    <group>
+                                                        <field name="question" required="1"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="answer" required="1"/>
+                                                    </group>
+                                                </group>
+                                            </form>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </page>
+                            <page string="About Us">
+                                <notebook>
+                                    <page string="Section : About Us">
+                                        <group>
+                                            <group>
+                                                <field name="about_main_title"/>
+                                                <field name="about_img" widget="image" string="About Image"/>
+                                            </group>
+                                            <group>
+                                                <field name="about_desc"/>
+                                            </group>
+                                        </group>
+                                        <group string="Banners">
+                                            <group>
+                                                <field name="banner1_title" string="Title 1"
+                                                       placeholder="e.g.Effortless Implementation"/>
+                                                <field name="banner1_image" widget="image" options='{"size": [95, 95]}'
+                                                       string="Image 1"
+                                                       class="bg-view"/>
+                                                <field name="banner2_title" placeholder="e.g.Rapid Delivery"
+                                                       string="Title 2"/>
+                                                <field name="banner2_image" widget="image" options='{"size": [95, 95]}'
+                                                       class="bg-view" string="Image 2"/>
+                                            </group>
+                                            <group>
+                                                <field name="banner3_title" placeholder="e.g.Process Optimization"
+                                                       string="Title 3"/>
+                                                <field name="banner3_image" widget="image" options='{"size": [95, 95]}'
+                                                       class="bg-view" string="Image 3"/>
+                                                <field name="banner4_title" placeholder="e.g.Cost-Effective Solutions"
+                                                       string="Title 4"/>
+                                                <field name="banner4_image" widget="image" options='{"size": [95, 95]}'
+                                                       class="bg-view" string="Image 4"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Section : Our Partners">
+                                        <group>
+                                            <group>
+                                                <field name="arc_partners_title" placeholder="Our Partners"/>
+                                            </group>
+                                        </group>
+                                        <field name="arc_partner_ids">
+                                            <list editable="bottom">
+                                                <field name="name" required="1"/>
+                                                <field name="image" required="1"/>
+                                            </list>
+                                        </field>
+                                    </page>
+                                    <page string="Section : Achievement">
+                                        <group>
+                                            <group string="Left Side">
+                                                <field name="count_fact_title"/>
+                                                <field name="count_fact_desc"/>
+                                                <field name="count_fact_bg" widget="image"/>
+                                                <field name="achievement_bg" widget="image"/>
+                                            </group>
+                                            <group string="Right Side">
+                                                <field name="achievement_count_1"/>
+                                                <field name="achievement_title_1"/>
+                                                <field name="achievement_count_2"/>
+                                                <field name="achievement_title_2"/>
+                                                <field name="achievement_count_3"/>
+                                                <field name="achievement_title_3"/>
+                                                <field name="achievement_count_4"/>
+                                                <field name="achievement_title_4"/>
+                                            </group>
+                                        </group>
+                                    </page>
+                                    <page string="Section : Team Details">
+                                        <group>
+                                            <field name="show_team"/>
+                                        </group>
+                                        <field name="team_member_ids" invisible="not show_team">
+                                            <form>
+                                                <group>
+                                                    <group>
+                                                        <field name="full_name" required="1"/>
+                                                        <field name="designation" required="1"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="image" options='{"size": [65, 65]}' class="bg-view"
+                                                               widget="image"/>
+                                                    </group>
+                                                </group>
+                                            </form>
+                                            <list>
+                                                <field name="full_name"/>
+                                                <field name="designation"/>
+                                            </list>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </page>
+                            <page string="Services Menu">
+                                <field name="service_section_ids">
+                                    <list>
+                                        <field name="title" string="Section"/>
+                                    </list>
+                                    <form>
+                                        <sheet>
+                                            <div class="oe_title">
+                                                <label for="title"/>
+                                                <h1>
+                                                    <field name="title" required="1"/>
+                                                </h1>
+                                            </div>
+                                            <notebook>
+                                                <page string="Sub Menus">
+                                                    <field name="service_menu_ids">
+                                                        <list>
+                                                            <field name="name"/>
+                                                            <field name="route"/>
+                                                        </list>
+                                                        <form>
+                                                            <group>
+                                                                <group>
+                                                                    <field name="name"/>
+                                                                </group>
+                                                                <group>
+                                                                    <field name="route"/>
+                                                                    <field name="main_image"/>
+                                                                </group>
+                                                            </group>
+                                                            <notebook>
+                                                                <page string="Content">
+                                                                    <field name="content"/>
+                                                                </page>
+                                                            </notebook>
+                                                        </form>
+                                                    </field>
+                                                </page>
+                                            </notebook>
+                                        </sheet>
+                                    </form>
+                                </field>
+                            </page>
+                        </notebook>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,79 @@
+<odoo>
+    <template id="arc_custom_login" inherit_id="web.login" name="Custom Login" active="True" priority="99">
+        <xpath expr="//t" position="replace">
+            <t t-call="web.login_layout">
+                <owl-component t-if="not login" name="web.user_switch"/>
+
+                <form t-attf-class="oe_login_form #{'' if login else 'd-none'} mt-3 d-flex justify-content-center flex-column align-items-center wow fadeIn"
+                      role="form"
+                      t-attf-action="/web/login" method="post"
+                      style="background-color: #fff; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px; box-sizing: border-box; padding: 20px 30px;"
+                      onsubmit="this.action = '/web/login' + location.hash">
+                    <div class="d-flex justify-content-center align-items-center border-bottom-1 wow fadeInDown"
+                         data-wow-delay="0.2s">
+                        <img src="/website_arclight_infotech/static/src/img/arch_logo.png" style="height: 100px;"/>
+                    </div>
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+                    <div class="mb-3 wow fadeInUp" data-wow-delay="0.4s" t-if="databases and len(databases) &gt; 1">
+                        <label for="db" class="col-form-label">Database</label>
+                        <div class="input-group">
+                            <input type="text" name="db" t-att-value="request.db" id="db" class="form-control"
+                                   required="required" readonly="readonly"/>
+                            <a role="button" href="/web/database/selector" class="btn btn-secondary">Select
+                                <i class="fa fa-database" role="img" aria-label="Database" title="Database"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mb-3 field-login wow fadeInUp" data-wow-delay="0.6s">
+                        <label for="login" class="form-label d-flex justify-content-between">Email</label>
+                        <input type="text" placeholder="Email" name="login" t-att-value="login" id="login"
+                               class="custom-control" required="required" autocapitalize="off"
+                               style="border-radius: 20px; border: 1px solid #c0c0c0; outline: 0 !important; box-sizing: border-box; padding: 12px 15px; width: 100%;"
+                               autocomplete="username"/>
+                    </div>
+
+                    <div class="mb-3 wow fadeInUp" data-wow-delay="0.8s">
+                        <label for="password" class="form-label d-flex justify-content-between">Password</label>
+                        <input type="password" placeholder="Password" name="password" id="password"
+                               class="custom-control"
+                               style="border-radius: 20px; border: 1px solid #c0c0c0; outline: 0 !important; box-sizing: border-box; padding: 12px 15px; width: 100%;"
+                               autocomplete="current-password"
+                               t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
+                    </div>
+
+                    <p class="alert alert-danger wow fadeInUp" data-wow-delay="1s" t-if="error" role="alert">
+                        <t t-esc="error"/>
+                    </p>
+                    <p class="alert alert-success wow fadeInUp" data-wow-delay="1s" t-if="message" role="status">
+                        <t t-esc="message"/>
+                    </p>
+
+                    <div class="oe_login_buttons text-center gap-1 d-grid mb-1 pt-3 wow fadeInUp w-100"
+                         data-wow-delay="1.2s">
+                        <button type="submit" class="btn btn-primary">Log in</button>
+                        <t t-if="debug">
+                            <button type="submit" name="redirect" value="/web/become" class="btn btn-link btn-sm">
+                                Log in as superuser
+                            </button>
+                        </t>
+                        <div class="o_login_auth"/>
+                    </div>
+
+                    <input type="hidden" name="type" value="password"/>
+                    <input type="hidden" name="redirect" t-att-value="redirect"/>
+                </form>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="arc_custom_login_container" inherit_id="website.login_layout" name="Custom Login Container"
+              active="True" priority="99">
+        <xpath expr="//div[hasclass('oe_website_login_container')]" position="attributes">
+            <attribute name="class">oe_website_login_container d-flex justify-content-center align-items-center wow
+                fadeIn
+            </attribute>
+        </xpath>
+    </template>
+</odoo>
